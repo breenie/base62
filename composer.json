@@ -1,0 +1,23 @@
+{
+    "name": "kurl/base62",
+    "license": "MIT",
+    "type": "project",
+    "description": "Simple base 62 encoder/decoder",
+    "autoload": {
+        "psr-0": {
+            "": "src/"
+        }
+    },
+    "require": {
+        "php": ">=5.3.3"
+    },
+    "suggest": {
+        "php-gmp": "If you want faster encoding/decoding"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "3.7.*"
+    },
+    "config": {
+        "bin-dir": "bin"
+    }
+}
