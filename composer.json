@@ -2,6 +2,7 @@
     "name": "kurl/base62",
     "license": "MIT",
     "type": "project",
+    "version": "1.0.0",
     "description": "Simple base 62 encoder/decoder",
     "autoload": {
         "psr-0": {
