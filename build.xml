@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="kurl base 62 encoder" default="test" basedir=".">
+
+    <target name="clean" description="Removes previous builds">
+        <delete includeemptydirs="true" dir="build" quiet="true"/>
+    </target>
+
+    <target name="prepare" description="Prepares the build directory" depends="clean">
+        <mkdir dir="${basedir}/build" />
+        <mkdir dir="${basedir}/build/logs" />
+        <mkdir dir="${basedir}/build/coverage" />
+    </target>
+
+    <target name="build" />
+
+    <target name="test" depends="report-coverage" />
+
+    <target name="test-unit" description="Executes unit tests" depends="prepare">
+        <exec executable="bin/phpunit" failonerror="true">
+            <arg value="--configuration" />
+            <arg value="${basedir}/phpunit.xml.dist" />
+        </exec>
+    </target>
+
+    <target name="report-coverage" description="Executes all the tests with reports" depends="prepare">
+        <exec executable="bin/phpunit" failonerror="true">
+            <arg value="--configuration" />
+            <arg value="${basedir}/phpunit.xml.dist" />
+            <arg value="--coverage-html" />
+            <arg value="${basedir}/build/coverage" />
+            <arg value="--coverage-clover"/>
+            <arg value="${basedir}/build/logs/clover.xml"/>
+            <arg value="--log-junit"/>
+            <arg value="${basedir}/build/logs/phpunit.xml"/>
+        </exec>
+    </target>
+
+    <target name="composer" description="Installs composer dependencies">
+        <exec executable="composer">
+            <arg value="install"/>
+            <arg value="--dev"/>
+            <arg value="--prefer-dist"/>
+        </exec>
+    </target>
+</project>
